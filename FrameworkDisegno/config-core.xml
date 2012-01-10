@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+	<style>
+		<file url="./config-style.xml" />
+	</style>
+	<lang locale="it">
+	</lang>
+	<messaggi>
+		<file nome="messaggi"></file>
+	</messaggi>
+	<auto-config value="true"></auto-config>	
+</configs>
