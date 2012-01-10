@@ -1,6 +1,5 @@
 package view.oggetti;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 
@@ -10,8 +9,6 @@ public abstract class OggettoGrafico implements IOggettoGrafico{
 
 	private int x;
 	private int y;
-	private int width;
-	private int height;
 	protected IPainter painter;
 	private String nome;
 	
@@ -65,27 +62,6 @@ public abstract class OggettoGrafico implements IOggettoGrafico{
 		this.y = y;
 	}
 	
-	@Override
-	public Dimension getSize() {
-		return new Dimension(width, height);
-	}
-	
-	@Override
-	public void setSize(int width, int height) {
-		setWidth(width);
-		setHeight(height);
-	}
-	
-	@Override
-	public int getWidth() {
-		return width;
-	}
-	
-	@Override
-	public int getHeight() {
-		return height;
-	}
-	
 	public IPainter getPainter() {
 		return painter;
 	}
@@ -98,15 +74,4 @@ public abstract class OggettoGrafico implements IOggettoGrafico{
 	public void draw(final Graphics g) {
 		painter.paint(g);
 	}
-	
-	@Override
-	public void setWidth(int width) {
-		this.width = width;
-	}
-	
-	@Override
-	public void setHeight(int height) {
-		this.height = height;
-	}
-	
 }
