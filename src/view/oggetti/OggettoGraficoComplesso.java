@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 import view.oggetti.painter.IPainter;
 
-public abstract class OggettoGraficoComplesso extends OggettoGrafico implements IOggettoGraficoComplesso {
+public abstract class OggettoGraficoComplesso extends OggettoGraficoConSuperfice implements IOggettoGraficoComplesso {
 
 	ArrayList<IOggettoGrafico> listaOggetti = new ArrayList<IOggettoGrafico>();
 	

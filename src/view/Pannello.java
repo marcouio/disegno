@@ -18,8 +18,8 @@ public class Pannello extends PannelloBase{
 	public void paint(Graphics g) {
 		super.paint(g);
 		Rettangolo ret = new Rettangolo();
-		ret.setLocation(30, 40);
 		ret.setSize(160, 140);
+		ret.setLocation(30, 40);
 		ret.draw(g);
 	}
 }

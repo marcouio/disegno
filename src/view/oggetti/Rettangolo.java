@@ -41,7 +41,7 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 	}
 
 	public int getPerimetro() {
-		return latoAlto.getWidth() + latoBasso.getWidth() + latoSinistra.getWidth() + latoDestra.getWidth();
+		return latoAlto.getLunghezza() + latoBasso.getLunghezza() + latoSinistra.getLunghezza() + latoDestra.getLunghezza();
 	}
 
 	public int getArea() {
@@ -56,18 +56,23 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 	}
 	
 	@Override
-	public void setWidth(int width) {
-		super.setWidth(width);
-		this.latoAlto.setWidth(width);
-		this.latoBasso.setWidth(width);
+	public void setSize(int width, int height) {
+		super.setSize(width, height);
+		settaLati();
+
+	}
+
+	private void settaLati() {
+		this.latoAlto.setOrigine(new Point(getX(), getY()));
+		this.latoAlto.setDestinazione(new Point(getX() + getWidth(), getY()));
+		this.latoBasso.setOrigine(new Point(getX(), getY() + getHeight()));
+		this.latoBasso.setDestinazione(new Point(getX() + getWidth(), getY() + getHeight()));
+		this.latoDestra.setOrigine(new Point(getX() + getWidth(), getY()));
+		this.latoDestra.setDestinazione(new Point(getX() + getWidth(), getY() + getHeight()));
+		this.latoSinistra.setOrigine(new Point(getX(), getY()));
+		this.latoSinistra.setDestinazione(new Point(getX(), getY() + getHeight()));
 	}
 	
-	@Override
-	public void setHeight(int height) {
-		super.setHeight(height);
-		this.latoDestra.setWidth(height);
-		this.latoSinistra.setWidth(height);
-	}
 	
 	@Override
 	public Point getLocation() {
@@ -77,13 +82,6 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 	@Override
 	public void setLocation(int x, int y) {
 		super.setLocation(x, y);
-		this.latoAlto.setOrigine(new Point(x, y));
-		this.latoAlto.setDestinazione(new Point(x + getWidth(), y));
-		this.latoBasso.setOrigine(new Point(x, y + getHeight()));
-		this.latoBasso.setDestinazione(new Point(x + getWidth(), y + getHeight()));
-		this.latoDestra.setOrigine(new Point(x + getWidth(), y));
-		this.latoDestra.setDestinazione(new Point(x + getWidth(), y + getHeight()));
-		this.latoSinistra.setOrigine(new Point(x, y));
-		this.latoSinistra.setDestinazione(new Point(x, y + getHeight()));
+		settaLati();
 	}
 }

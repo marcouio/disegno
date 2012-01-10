@@ -14,10 +14,7 @@ public class PainterBase implements IPainter {
 
 	@Override
 	public void paint(Graphics g) {
-		if (
-			(oggettoGrafico == null) ||
-			(oggettoGrafico.getWidth() <= 0) || 
-			(oggettoGrafico.getHeight() <= 0)) {
+		if (oggettoGrafico == null){
 			return;
 		}
 	}

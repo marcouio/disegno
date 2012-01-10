@@ -6,6 +6,7 @@ import grafica.componenti.label.Label;
 import java.awt.Color;
 
 import view.Pannello;
+import view.oggetti.Rettangolo;
 import controller.ControlloreBase;
 
 public class Controllore extends ControlloreBase{
@@ -29,6 +30,9 @@ public class Controllore extends ControlloreBase{
 		Pannello p = new Pannello(frame);
 		p.setSize(200, 300);
 		p.setBackground(Color.white);
+		Rettangolo retta = new Rettangolo();
+		retta.setSize(20, 20);
+		System.out.println(retta.getPerimetro());
 	}
 
 	@Override
