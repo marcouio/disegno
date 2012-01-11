@@ -4,35 +4,36 @@ import grafica.componenti.contenitori.FrameBase;
 import grafica.componenti.label.Label;
 
 import java.awt.Color;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
 
 import view.Pannello;
 import view.oggetti.Rettangolo;
 import controller.ControlloreBase;
 
-public class Controllore extends ControlloreBase{
-	
+public class Controllore extends ControlloreBase {
+
 	private static Controllore singleton;
-	
+
 	public static Controllore getSingleton() {
-		if(singleton == null){
+		if (singleton == null) {
 			singleton = new Controllore();
 		}
 		return singleton;
 	}
 
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		Controllore.getSingleton().myMain(Controllore.getSingleton(), false, "app");
 	}
-	
+
+	public static Pannello p;
+
 	@Override
-	public void mainOverridato(FrameBase frame) {
+	public void mainOverridato(final FrameBase frame) {
 		Label l = new Label("Ciaooaciaocoac", frame.getContentPane());
-		Pannello p = new Pannello(frame);
+		p = new Pannello(frame);
 		p.setSize(200, 300);
 		p.setBackground(Color.white);
-		Rettangolo retta = new Rettangolo();
-		retta.setSize(20, 20);
-		System.out.println(retta.getPerimetro());
 	}
 
 	@Override
@@ -47,4 +48,30 @@ public class Controllore extends ControlloreBase{
 		return false;
 	}
 
+	public static void mouseClicked(final MouseEvent e) {
+		//		final int x = e.getX(), y = e.getY();
+		//		Rettangolo ret = p.getRet();
+		//		final Point puntatore = new Point(x, y);
+		//		ret.settaDistanzaDaMouse(puntatore);
+		//		ret.moveTo(x, y);
+		//		ret.draw(p.getGraphics());
+	}
+
+	public static void mouseDragged(final MouseEvent e) {
+		final int x = e.getX(), y = e.getY();
+		Rettangolo ret = p.getRet();
+		final Point puntatore = new Point(x, y);
+		ret.settaDistanzaDaMouse(puntatore);
+		ret.moveTo(x, y);
+		ret.draw(p.getGraphics());
+	}
+
+	public static void mouseMoved(final MouseEvent e) {
+		//		final int x = e.getX(), y = e.getY();
+		//		Rettangolo ret = p.getRet();
+		//		final Point puntatore = new Point(x, y);
+		//		ret.seleziona(puntatore);
+		//		ret.moveTo(x, y);
+		//		ret.draw(p.getGraphics());
+	}
 }
