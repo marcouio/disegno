@@ -123,16 +123,16 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 	}
 
 	public int ridimensionaAltezza(final Point mouse, final int riferimentoLatiHeight, final Point puntoCentrale) {
-		//		if (Math.abs(puntoCentrale.getY() - mouse.getY()) >= riferimentoLatiHeight) {
-		return (int) (getY() + getHeight() - (getY() + getHeight() - mouse.getY()));
-		//		}
-		//		return getHeight();
+		if (Math.abs(puntoCentrale.getY() - mouse.getY()) >= riferimentoLatiHeight) {
+			return (int) (getY() + getHeight() - (getY() + getHeight() - mouse.getY()));
+		}
+		return getHeight();
 	}
 
 	public int ridimensionaLarghezza(final Point mouse, final int riferimentoLatiWidth, final Point puntoCentrale) {
-		//		if (Math.abs(puntoCentrale.getX() - mouse.getX()) > riferimentoLatiWidth) {
-		return (int) (getX() + getWidth() - (getX() + getWidth() - mouse.getX()));
-		//		}
-		//		return getWidth();
+		if (Math.abs(puntoCentrale.getX() - mouse.getX()) > riferimentoLatiWidth) {
+			return (int) (getX() + getWidth() - (getX() + getWidth() - mouse.getX()));
+		}
+		return getWidth();
 	}
 }
