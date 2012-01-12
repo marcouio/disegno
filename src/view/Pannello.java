@@ -24,8 +24,8 @@ public class Pannello extends PannelloBase {
 	public Pannello(final Container contenitore) {
 		super(contenitore);
 		ret = new Rettangolo();
-		ret.setSize(160, 140);
-		ret.setLocation(30, 40);
+		ret.setSize(100, 100);
+		ret.setLocation(0, 0);
 		MyMouseListener mouseListener = new MyMouseListener();
 		this.addMouseListener(mouseListener.getMouseAdapter());
 		this.addMouseMotionListener(mouseListener.getMouseMotionAdapter());

@@ -22,6 +22,10 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 		add(latoBasso);
 		add(latoDestra);
 		add(latoSinistra);
+		getListaLati().add(latoAlto);
+		getListaLati().add(latoBasso);
+		getListaLati().add(latoDestra);
+		getListaLati().add(latoSinistra);
 	}
 
 	public Rettangolo(final String nome) {
@@ -93,5 +97,42 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 
 	public Lato getLatoDestra() {
 		return latoDestra;
+	}
+
+	@Override
+	public void ridimensiona(final Point mouse) {
+
+		int riferimentoLatiWidth = getWidth() / 2;
+		int riferimentoLatiHeight = getHeight() / 2;
+		Point puntoCentrale = getPuntoCentrale();
+
+		//		boolean quadranteAltoDestra = mouse.getX() > puntoCentrale.getX() && mouse.getY() < puntoCentrale.getY();
+		//		boolean quadranteBassoDestra = mouse.getX() > puntoCentrale.getX() && mouse.getY() > puntoCentrale.getY();
+		boolean quadranteBassoSinistra = mouse.getX() < puntoCentrale.getX() && mouse.getY() > puntoCentrale.getY();
+		boolean quadranteAltoSinistra = mouse.getX() < puntoCentrale.getX() && mouse.getY() < puntoCentrale.getY();
+
+		if (quadranteBassoSinistra || quadranteAltoSinistra) {
+			setX((int) (mouse.getX() - distanzaMouseDaXY.getX()));
+			setY((int) (mouse.getY() - distanzaMouseDaXY.getY()));
+		}
+		setLocation(getX(), getY());
+		setWidth(ridimensionaLarghezza(mouse, riferimentoLatiWidth, puntoCentrale));
+		setHeight(ridimensionaAltezza(mouse, riferimentoLatiHeight, puntoCentrale));
+		setSize(getWidth(), getHeight());
+
+	}
+
+	public int ridimensionaAltezza(final Point mouse, final int riferimentoLatiHeight, final Point puntoCentrale) {
+		//		if (Math.abs(puntoCentrale.getY() - mouse.getY()) >= riferimentoLatiHeight) {
+		return (int) (getY() + getHeight() - (getY() + getHeight() - mouse.getY()));
+		//		}
+		//		return getHeight();
+	}
+
+	public int ridimensionaLarghezza(final Point mouse, final int riferimentoLatiWidth, final Point puntoCentrale) {
+		//		if (Math.abs(puntoCentrale.getX() - mouse.getX()) > riferimentoLatiWidth) {
+		return (int) (getX() + getWidth() - (getX() + getWidth() - mouse.getX()));
+		//		}
+		//		return getWidth();
 	}
 }

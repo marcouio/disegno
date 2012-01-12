@@ -2,6 +2,7 @@ package view.oggetti;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.ArrayList;
 
 public interface IOggettoGraficoConSuperficie extends IOggettoGrafico {
 
@@ -28,5 +29,9 @@ public interface IOggettoGraficoConSuperficie extends IOggettoGrafico {
 	public void setLocation(final int x, final int y);
 
 	public Point getLocation();
+
+	public ArrayList<Lato> getListaLati();
+
+	public ArrayList<Lato> isMouseSuiLati(Point mouse);
 
 }
