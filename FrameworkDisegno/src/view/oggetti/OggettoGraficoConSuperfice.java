@@ -2,6 +2,8 @@ package view.oggetti;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.geom.Line2D;
+import java.util.ArrayList;
 
 import view.oggetti.painter.IPainter;
 
@@ -12,6 +14,8 @@ public abstract class OggettoGraficoConSuperfice extends OggettoGrafico implemen
 	private int x;
 	private int y;
 	public Point distanzaMouseDaXY;
+	private ArrayList<Lato> listaLati = new ArrayList<Lato>();
+	private ArrayList<Lato> latiVicinoMouse;
 
 	public OggettoGraficoConSuperfice(final String nome, final IPainter painter) {
 		super(nome, painter);
@@ -83,6 +87,11 @@ public abstract class OggettoGraficoConSuperfice extends OggettoGrafico implemen
 		this.y = y;
 	}
 
+	@Override
+	public ArrayList<Lato> getListaLati() {
+		return listaLati;
+	}
+
 	/**
 	* Sposta l'oggetto grafico in relazione alla posizione x, y
 	* 
@@ -91,11 +100,15 @@ public abstract class OggettoGraficoConSuperfice extends OggettoGrafico implemen
 	*/
 	public void moveTo(final int x, final int y) {
 		if (distanzaMouseDaXY != null) {
-			int xx = (x + (int) distanzaMouseDaXY.getX());
-			int yy = (y + (int) distanzaMouseDaXY.getY());
+			int xx = (x - (int) distanzaMouseDaXY.getX());
+			int yy = (y - (int) distanzaMouseDaXY.getY());
 			this.setLocation(xx, yy);
 		}
 	} // moveTo
+
+	public Point getDistanzaMouseDaXY() {
+		return distanzaMouseDaXY;
+	}
 
 	/**
 	 * Seleziona l'oggetto grafico e setta le coordinate del puntatore del mouse
@@ -109,4 +122,20 @@ public abstract class OggettoGraficoConSuperfice extends OggettoGrafico implemen
 		}
 	}
 
+	@Override
+	public ArrayList<Lato> isMouseSuiLati(final Point mouse) {
+		latiVicinoMouse = new ArrayList<Lato>();
+		for (Object element : listaLati) {
+			Lato lato = (Lato) element;
+			double distanza = Line2D.ptLineDist(lato.getOrigine().getX(), lato.getOrigine().getY(), lato.getDestinazione().getX(), lato.getDestinazione().getY(), mouse.getX(), mouse.getY());
+			if (distanza < 5) {
+				latiVicinoMouse.add(lato);
+			}
+		}
+		return latiVicinoMouse;
+	}
+
+	public ArrayList<Lato> getLatiVicinoMouse() {
+		return latiVicinoMouse;
+	}
 }

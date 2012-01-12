@@ -12,4 +12,6 @@ public interface IOggettoGrafico {
 	public void setNome(final String nome);
 
 	public void draw(final Graphics g);
+
+	public void ridimensiona(Point mouse);
 }

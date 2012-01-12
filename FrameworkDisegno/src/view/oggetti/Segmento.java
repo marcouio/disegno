@@ -48,4 +48,10 @@ public class Segmento extends OggettoGrafico {
 		Segmento seg = new Segmento(new Point(20, 20), new Point(40, 40));
 		System.out.println(seg.getLunghezza());
 	}
+
+	@Override
+	public void ridimensiona(final Point mouse) {
+		// TODO Auto-generated method stub
+
+	}
 }

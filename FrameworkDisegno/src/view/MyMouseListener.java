@@ -11,6 +11,16 @@ public class MyMouseListener {
 	MouseAdapter mouseAdapter = new MouseAdapter() {
 
 		@Override
+		public void mousePressed(final MouseEvent e) {
+			Controllore.mousePressed(e);
+		}
+
+		@Override
+		public void mouseReleased(final MouseEvent e) {
+			Controllore.mouseReleased(e);
+		}
+
+		@Override
 		public void mouseClicked(final MouseEvent e) {
 			Controllore.mouseClicked(e);
 		}
@@ -25,7 +35,8 @@ public class MyMouseListener {
 		@Override
 		public void mouseDragged(final MouseEvent e) {
 			Controllore.mouseDragged(e);
-		};
+		}
+
 	};
 
 	public MouseAdapter getMouseAdapter() {
