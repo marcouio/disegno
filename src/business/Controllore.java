@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
 import view.Pannello;
@@ -61,7 +62,7 @@ public class Controllore extends ControlloreBase {
 		final Point puntatore = new Point(x, y);
 		if (ret.isMouseSuiLati(puntatore).size() > 0) {
 			ret.ridimensiona(puntatore);
-		} else {
+		} else if (UtilDisegno.isInRegion((int) (puntatore.getX()), (int) (puntatore.getY()), new Rectangle(new Dimension(ret.getWidth(), ret.getHeight())))) {
 			ret.moveTo(x, y);
 		}
 		Image offscreen = null;
@@ -75,6 +76,15 @@ public class Controllore extends ControlloreBase {
 		ret.draw(bufferGraphics);
 		p.getGraphics().drawImage(offscreen, 0, 0, null);
 		//		ret.draw(p.getGraphics());
+
+		System.out.println("*********************************");
+		System.out.println("X Rettangolo: " + ret.getX());
+		System.out.println("Y Rettangolo: " + ret.getY());
+		System.out.println("Larghezza rettangolo: " + ret.getWidth());
+		System.out.println("Altezza Rettangolo: " + ret.getHeight());
+		System.out.println("Mouse X: " + puntatore.getX());
+		System.out.println("Mouse Y: " + puntatore.getY());
+		System.out.println("*********************************");
 	}
 
 	public static void mouseMoved(final MouseEvent e) {

@@ -100,9 +100,9 @@ public abstract class OggettoGraficoConSuperfice extends OggettoGrafico implemen
 	*/
 	public void moveTo(final int x, final int y) {
 		if (distanzaMouseDaXY != null) {
-			int xx = (x - (int) distanzaMouseDaXY.getX());
-			int yy = (y - (int) distanzaMouseDaXY.getY());
-			this.setLocation(xx, yy);
+			setX((x - (int) distanzaMouseDaXY.getX()));
+			setY(y - (int) distanzaMouseDaXY.getY());
+			this.setLocation(getX(), getY());
 		}
 	} // moveTo
 
