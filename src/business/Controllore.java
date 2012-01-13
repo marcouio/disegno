@@ -8,7 +8,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
 import view.Pannello;
@@ -59,12 +58,11 @@ public class Controllore extends ControlloreBase {
 	public static void mouseDragged(final MouseEvent e) {
 		final int x = e.getX(), y = e.getY();
 		Rettangolo ret = p.getRet();
-		Rectangle rect = new Rectangle(ret.getX(), ret.getY(), ret.getWidth(), ret.getHeight());
 		final Point puntatore = new Point(x, y);
 		//		System.out.println("n lati vicini mouse: " + ret.isMouseSuiLati(puntatore).size());
-		if (ret.isMouseSuiLati(puntatore).size() > 0) {
+		if (ret.getLatiSuMouse().size() > 0) {
 			ret.ridimensiona(puntatore);
-		} else if (UtilDisegno.isInRegion(puntatore, rect)) {
+		} else if (ret.isMouseIsInRegion()) {
 			ret.moveTo(x, y);
 		}
 		Image offscreen = null;
@@ -104,12 +102,9 @@ public class Controllore extends ControlloreBase {
 
 		ret.nonModificaAltezza = riferimentoLatiHeight > Math.abs(puntoCentrale.getY() - mouse.getY());
 		ret.nonModificaLarghezza = riferimentoLatiWidth > Math.abs(puntoCentrale.getX() - mouse.getX());
-		System.out.println();
-		System.out.println("modificaAltezza: " + !ret.nonModificaAltezza);
-		System.out.println("modificaLargezza: " + !ret.nonModificaLarghezza);
-		System.out.println();
 
-		p.getRet().distanzaMouseDaXY = null;
+		ret.mouseIsInRegion(mouse);
+		ret.settaLatiSuMouse(mouse);
 		ret.settaDistanzaDaMouse(mouse);
 	}
 
