@@ -2,9 +2,12 @@ package view.oggetti;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import view.oggetti.painter.IPainter;
 import view.oggetti.painter.PainterRettangolo;
+import disegno.UtilDisegno;
 
 public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGraficoConSuperficie {
 
@@ -14,6 +17,17 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 	private Lato latoDestra = new Lato("Destra");
 	public boolean nonModificaLarghezza = false;
 	public boolean nonModificaAltezza = false;
+	private OggettoGraficoConSuperfice ret;
+	private ArrayList<Lato> latiSuMouse;
+	private boolean mouseIsInRegion;
+
+	public boolean isMouseIsInRegion() {
+		return mouseIsInRegion;
+	}
+
+	public ArrayList<Lato> getLatiSuMouse() {
+		return latiSuMouse;
+	}
 
 	public Rettangolo(final String nome, final IPainter painter) {
 		super(nome, painter);
@@ -105,52 +119,78 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 	@Override
 	public void ridimensiona(final Point mouse) {
 
-		int riferimentoLatiWidth = getWidth() / 2;
-		int riferimentoLatiHeight = getHeight() / 2;
 		Point puntoCentrale = getPuntoCentrale();
 
-		//		boolean quadranteAltoDestra = mouse.getX() > puntoCentrale.getX() && mouse.getY() < puntoCentrale.getY();
-		//		boolean quadranteBassoDestra = mouse.getX() > puntoCentrale.getX() && mouse.getY() > puntoCentrale.getY();
+		boolean quadranteAltoDestra = mouse.getX() > puntoCentrale.getX() && mouse.getY() < puntoCentrale.getY();
+		boolean quadranteBassoDestra = mouse.getX() > puntoCentrale.getX() && mouse.getY() > puntoCentrale.getY();
 		boolean quadranteBassoSinistra = mouse.getX() < puntoCentrale.getX() && mouse.getY() > puntoCentrale.getY();
 		boolean quadranteAltoSinistra = mouse.getX() < puntoCentrale.getX() && mouse.getY() < puntoCentrale.getY();
 
-		if (quadranteBassoSinistra || quadranteAltoSinistra) {
-			setX((int) (mouse.getX() - distanzaMouseDaXY.getX()));
-			setY((int) (mouse.getY() - distanzaMouseDaXY.getY()));
+		if (latiSuMouse.size() == 1 && latiSuMouse.get(0).getNome().equals("Sinistra")) {
+			ridimensionaClickLatoSinistro(mouse);
+		} else if (latiSuMouse.size() == 1 && latiSuMouse.get(0).getNome().equals("Destra")) {
+			ridimensionaClickLatoDestro(mouse);
+		} else if (latiSuMouse.size() == 1 && latiSuMouse.get(0).getNome().equals("Alto")) {
+			ridimensionaClickLatoAlto(mouse);
+		} else if (latiSuMouse.size() == 1 && latiSuMouse.get(0).getNome().equals("Basso")) {
+			ridimensionaClickLatoBasso(mouse);
+		} else if (latiSuMouse.size() == 2 && quadranteAltoSinistra) {
+			ridimensionaClickLatoSinistro(mouse);
+			ridimensionaClickLatoAlto(mouse);
+		} else if (latiSuMouse.size() == 2 && quadranteBassoSinistra) {
+			ridimensionaClickLatoSinistro(mouse);
+			ridimensionaClickLatoBasso(mouse);
+		} else if (latiSuMouse.size() == 2 && quadranteBassoDestra) {
+			ridimensionaClickLatoBasso(mouse);
+			ridimensionaClickLatoDestro(mouse);
+		} else if (latiSuMouse.size() == 2 && quadranteAltoDestra) {
+			ridimensionaClickLatoAlto(mouse);
+			ridimensionaClickLatoDestro(mouse);
 		}
-		//		setLocation(getX(), getY());
-		setWidth((int) getNuoveDimensioni(mouse, riferimentoLatiHeight, puntoCentrale, riferimentoLatiWidth).getWidth());
-		setHeight((int) getNuoveDimensioni(mouse, riferimentoLatiHeight, puntoCentrale, riferimentoLatiWidth).getHeight());
+		setLocation(getX(), getY());
 		setSize(getWidth(), getHeight());
+	}
 
+	private void ridimensionaClickLatoBasso(final Point mouse) {
+		setHeight((int) (Math.abs(mouse.getY() - getY())));
+	}
+
+	private void ridimensionaClickLatoAlto(final Point mouse) {
+		double newY = mouse.getY() - distanzaMouseDaXY.getY();
+		setHeight((int) (getY() - newY) + getHeight());
+		setY((int) (newY));
+
+	}
+
+	private void ridimensionaClickLatoDestro(final Point mouse) {
+		setWidth((int) (Math.abs(mouse.getX() - getX())));
+	}
+
+	public void ridimensionaClickLatoSinistro(final Point mouse) {
+		double newX = mouse.getX() - distanzaMouseDaXY.getX();
+		setWidth((int) (getX() - newX) + getWidth());
+		setX((int) (newX));
 	}
 
 	public Dimension getNuoveDimensioni(final Point mouse, final int riferimentoLatiHeight, final Point puntoCentrale, final int riferimentoLatiWidth) {
 		int newWidth = (int) (getX() + getWidth() - (getX() + getWidth() - mouse.getX()));
 		int newHeight = (int) (getY() + getHeight() - (getY() + getHeight() - mouse.getY()));
 
-		//		if (riferimentoLatiHeight > Math.abs(puntoCentrale.getY() - mouse.getY())) {
 		if (nonModificaAltezza) {
 			newHeight = getHeight();
 		}
-		//		if (riferimentoLatiWidth > Math.abs(puntoCentrale.getX() - mouse.getX())) {
 		if (nonModificaLarghezza) {
 			newWidth = getWidth();
 		}
 		return new Dimension(newWidth, newHeight);
 	}
 
-	//	public int ridimensionaAltezza(final Point mouse, final int riferimentoLatiHeight, final Point puntoCentrale) {
-	//		if (Math.abs(puntoCentrale.getY() - mouse.getY()) > riferimentoLatiHeight) {
-	//			return (int) (getY() + getHeight() - (getY() + getHeight() - mouse.getY()));
-	//		}
-	//		return getHeight();
-	//	}
-	//
-	//	public int ridimensionaLarghezza(final Point mouse, final int riferimentoLatiWidth, final Point puntoCentrale) {
-	//		if (Math.abs(puntoCentrale.getX() - mouse.getX()) > riferimentoLatiWidth) {
-	//			return (int) (getX() + getWidth() - (getX() + getWidth() - mouse.getX()));
-	//		}
-	//		return getWidth();
-	//	}
+	public void settaLatiSuMouse(final Point mouse) {
+		latiSuMouse = this.isMouseSuiLati(mouse);
+	}
+
+	public void mouseIsInRegion(final Point mouse) {
+		Rectangle rect = new Rectangle(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+		mouseIsInRegion = UtilDisegno.isInRegion(mouse, rect);
+	}
 }
