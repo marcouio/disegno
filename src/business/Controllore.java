@@ -59,10 +59,12 @@ public class Controllore extends ControlloreBase {
 	public static void mouseDragged(final MouseEvent e) {
 		final int x = e.getX(), y = e.getY();
 		Rettangolo ret = p.getRet();
+		Rectangle rect = new Rectangle(ret.getX(), ret.getY(), ret.getWidth(), ret.getHeight());
 		final Point puntatore = new Point(x, y);
+		//		System.out.println("n lati vicini mouse: " + ret.isMouseSuiLati(puntatore).size());
 		if (ret.isMouseSuiLati(puntatore).size() > 0) {
 			ret.ridimensiona(puntatore);
-		} else if (UtilDisegno.isInRegion((int) (puntatore.getX()), (int) (puntatore.getY()), new Rectangle(new Dimension(ret.getWidth(), ret.getHeight())))) {
+		} else if (UtilDisegno.isInRegion(puntatore, rect)) {
 			ret.moveTo(x, y);
 		}
 		Image offscreen = null;
@@ -75,33 +77,40 @@ public class Controllore extends ControlloreBase {
 		bufferGraphics.setColor(Color.BLACK);
 		ret.draw(bufferGraphics);
 		p.getGraphics().drawImage(offscreen, 0, 0, null);
-		//		ret.draw(p.getGraphics());
 
-		System.out.println("*********************************");
-		System.out.println("X Rettangolo: " + ret.getX());
-		System.out.println("Y Rettangolo: " + ret.getY());
-		System.out.println("Larghezza rettangolo: " + ret.getWidth());
-		System.out.println("Altezza Rettangolo: " + ret.getHeight());
-		System.out.println("Mouse X: " + puntatore.getX());
-		System.out.println("Mouse Y: " + puntatore.getY());
-		System.out.println("*********************************");
+		//		System.out.println("*********************************");
+		//		System.out.println("X Rettangolo: " + ret.getX());
+		//		System.out.println("Y Rettangolo: " + ret.getY());
+		//		System.out.println("Larghezza rettangolo: " + ret.getWidth());
+		//		System.out.println("Altezza Rettangolo: " + ret.getHeight());
+		//		System.out.println("Mouse X: " + puntatore.getX());
+		//		System.out.println("Mouse Y: " + puntatore.getY());
+		//		System.out.println("PuntoCentrale X,Y: " + ret.getPuntoCentrale().getX() + ", " + ret.getPuntoCentrale().getY());
+		//		System.out.println("*********************************");
 	}
 
 	public static void mouseMoved(final MouseEvent e) {
-		//		final int x = e.getX(), y = e.getY();
-		//		Rettangolo ret = p.getRet();
-		//		final Point puntatore = new Point(x, y);
-		//		ret.seleziona(puntatore);
-		//		ret.moveTo(x, y);
-		//		ret.draw(p.getGraphics());
 	}
 
 	public static void mousePressed(final MouseEvent e) {
-		p.getRet().distanzaMouseDaXY = null;
+
 		final int x = e.getX(), y = e.getY();
+		final Point mouse = new Point(x, y);
 		Rettangolo ret = p.getRet();
-		final Point puntatore = new Point(x, y);
-		ret.settaDistanzaDaMouse(puntatore);
+		final Point puntoCentrale = ret.getPuntoCentrale();
+
+		int riferimentoLatiWidth = ret.getWidth() / 2;
+		int riferimentoLatiHeight = ret.getHeight() / 2;
+
+		ret.nonModificaAltezza = riferimentoLatiHeight > Math.abs(puntoCentrale.getY() - mouse.getY());
+		ret.nonModificaLarghezza = riferimentoLatiWidth > Math.abs(puntoCentrale.getX() - mouse.getX());
+		System.out.println();
+		System.out.println("modificaAltezza: " + !ret.nonModificaAltezza);
+		System.out.println("modificaLargezza: " + !ret.nonModificaLarghezza);
+		System.out.println();
+
+		p.getRet().distanzaMouseDaXY = null;
+		ret.settaDistanzaDaMouse(mouse);
 	}
 
 	public static void mouseReleased(final MouseEvent e) {

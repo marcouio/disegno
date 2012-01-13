@@ -1,5 +1,6 @@
 package view.oggetti;
 
+import java.awt.Dimension;
 import java.awt.Point;
 
 import view.oggetti.painter.IPainter;
@@ -11,6 +12,8 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 	private Lato latoBasso = new Lato("Basso");
 	private Lato latoSinistra = new Lato("Sinistra");
 	private Lato latoDestra = new Lato("Destra");
+	public boolean nonModificaLarghezza = false;
+	public boolean nonModificaAltezza = false;
 
 	public Rettangolo(final String nome, final IPainter painter) {
 		super(nome, painter);
@@ -115,24 +118,39 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 			setX((int) (mouse.getX() - distanzaMouseDaXY.getX()));
 			setY((int) (mouse.getY() - distanzaMouseDaXY.getY()));
 		}
-		setLocation(getX(), getY());
-		setWidth(ridimensionaLarghezza(mouse, riferimentoLatiWidth, puntoCentrale));
-		setHeight(ridimensionaAltezza(mouse, riferimentoLatiHeight, puntoCentrale));
+		//		setLocation(getX(), getY());
+		setWidth((int) getNuoveDimensioni(mouse, riferimentoLatiHeight, puntoCentrale, riferimentoLatiWidth).getWidth());
+		setHeight((int) getNuoveDimensioni(mouse, riferimentoLatiHeight, puntoCentrale, riferimentoLatiWidth).getHeight());
 		setSize(getWidth(), getHeight());
 
 	}
 
-	public int ridimensionaAltezza(final Point mouse, final int riferimentoLatiHeight, final Point puntoCentrale) {
-		if (Math.abs(puntoCentrale.getY() - mouse.getY()) >= riferimentoLatiHeight) {
-			return (int) (getY() + getHeight() - (getY() + getHeight() - mouse.getY()));
+	public Dimension getNuoveDimensioni(final Point mouse, final int riferimentoLatiHeight, final Point puntoCentrale, final int riferimentoLatiWidth) {
+		int newWidth = (int) (getX() + getWidth() - (getX() + getWidth() - mouse.getX()));
+		int newHeight = (int) (getY() + getHeight() - (getY() + getHeight() - mouse.getY()));
+
+		//		if (riferimentoLatiHeight > Math.abs(puntoCentrale.getY() - mouse.getY())) {
+		if (nonModificaAltezza) {
+			newHeight = getHeight();
 		}
-		return getHeight();
+		//		if (riferimentoLatiWidth > Math.abs(puntoCentrale.getX() - mouse.getX())) {
+		if (nonModificaLarghezza) {
+			newWidth = getWidth();
+		}
+		return new Dimension(newWidth, newHeight);
 	}
 
-	public int ridimensionaLarghezza(final Point mouse, final int riferimentoLatiWidth, final Point puntoCentrale) {
-		if (Math.abs(puntoCentrale.getX() - mouse.getX()) > riferimentoLatiWidth) {
-			return (int) (getX() + getWidth() - (getX() + getWidth() - mouse.getX()));
-		}
-		return getWidth();
-	}
+	//	public int ridimensionaAltezza(final Point mouse, final int riferimentoLatiHeight, final Point puntoCentrale) {
+	//		if (Math.abs(puntoCentrale.getY() - mouse.getY()) > riferimentoLatiHeight) {
+	//			return (int) (getY() + getHeight() - (getY() + getHeight() - mouse.getY()));
+	//		}
+	//		return getHeight();
+	//	}
+	//
+	//	public int ridimensionaLarghezza(final Point mouse, final int riferimentoLatiWidth, final Point puntoCentrale) {
+	//		if (Math.abs(puntoCentrale.getX() - mouse.getX()) > riferimentoLatiWidth) {
+	//			return (int) (getX() + getWidth() - (getX() + getWidth() - mouse.getX()));
+	//		}
+	//		return getWidth();
+	//	}
 }

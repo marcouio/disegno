@@ -83,8 +83,8 @@ public abstract class OggettoGraficoConSuperfice extends OggettoGrafico implemen
 
 	@Override
 	public void setLocation(final int x, final int y) {
-		this.x = x;
-		this.y = y;
+		setX(x);
+		setY(y);
 	}
 
 	@Override
@@ -128,7 +128,7 @@ public abstract class OggettoGraficoConSuperfice extends OggettoGrafico implemen
 		for (Object element : listaLati) {
 			Lato lato = (Lato) element;
 			double distanza = Line2D.ptLineDist(lato.getOrigine().getX(), lato.getOrigine().getY(), lato.getDestinazione().getX(), lato.getDestinazione().getY(), mouse.getX(), mouse.getY());
-			if (distanza < 5) {
+			if (distanza < 3) {
 				latiVicinoMouse.add(lato);
 			}
 		}
