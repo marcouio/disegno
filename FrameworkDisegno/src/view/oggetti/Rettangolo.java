@@ -1,6 +1,5 @@
 package view.oggetti;
 
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -15,8 +14,6 @@ public class Rettangolo extends FormaGeometrica2D implements IFormaGeometrica2D 
 	private Lato latoBasso = new Lato("Basso");
 	private Lato latoSinistra = new Lato("Sinistra");
 	private Lato latoDestra = new Lato("Destra");
-	public boolean nonModificaLarghezza = false;
-	public boolean nonModificaAltezza = false;
 	private ArrayList<Lato> latiSuMouse;
 	private boolean mouseIsInRegion;
 
@@ -154,19 +151,6 @@ public class Rettangolo extends FormaGeometrica2D implements IFormaGeometrica2D 
 		double newX = mouse.getX() - distanzaMouseDaXY.getX();
 		setWidth((int) (getX() - newX) + getWidth());
 		setX((int) (newX));
-	}
-
-	public Dimension getNuoveDimensioni(final Point mouse, final int riferimentoLatiHeight, final Point puntoCentrale, final int riferimentoLatiWidth) {
-		int newWidth = (int) (getX() + getWidth() - (getX() + getWidth() - mouse.getX()));
-		int newHeight = (int) (getY() + getHeight() - (getY() + getHeight() - mouse.getY()));
-
-		if (nonModificaAltezza) {
-			newHeight = getHeight();
-		}
-		if (nonModificaLarghezza) {
-			newWidth = getWidth();
-		}
-		return new Dimension(newWidth, newHeight);
 	}
 
 	public void settaLatiSuMouse(final Point mouse) {
