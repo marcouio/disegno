@@ -2,13 +2,13 @@ package view.oggetti.painter;
 
 import java.awt.Graphics;
 
-import view.oggetti.IOggettoGrafico;
+import view.oggetti.IFormaGeometrica;
 
 public class PainterBase implements IPainter {
 
-	IOggettoGrafico oggettoGrafico;
+	IFormaGeometrica oggettoGrafico;
 	
-	public PainterBase(final IOggettoGrafico oggettoGrafico) {
+	public PainterBase(final IFormaGeometrica oggettoGrafico) {
 		this.oggettoGrafico = oggettoGrafico;
 	}
 

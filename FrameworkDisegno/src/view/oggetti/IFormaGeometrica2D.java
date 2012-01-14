@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
 
-public interface IOggettoGraficoConSuperficie extends IOggettoGrafico {
+public interface IFormaGeometrica2D extends IFormaGeometricaComplessa {
 
 	public int getWidth();
 

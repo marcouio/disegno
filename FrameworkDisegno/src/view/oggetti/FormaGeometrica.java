@@ -4,19 +4,19 @@ import java.awt.Graphics;
 
 import view.oggetti.painter.IPainter;
 
-public abstract class OggettoGrafico implements IOggettoGrafico {
+public abstract class FormaGeometrica implements IFormaGeometrica {
 
 	protected IPainter painter;
 	private String nome;
 
-	public OggettoGrafico() {
+	public FormaGeometrica() {
 	}
 
-	public OggettoGrafico(final IPainter painter) {
+	public FormaGeometrica(final IPainter painter) {
 		this.painter = painter;
 	}
 
-	public OggettoGrafico(final String nome, final IPainter painter) {
+	public FormaGeometrica(final String nome, final IPainter painter) {
 		this.nome = nome;
 		this.painter = painter;
 	}

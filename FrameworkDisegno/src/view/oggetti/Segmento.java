@@ -4,7 +4,7 @@ import java.awt.Point;
 
 import view.oggetti.painter.PainterSegmento;
 
-public class Segmento extends OggettoGrafico {
+public class Segmento extends FormaGeometrica {
 
 	Point origine;
 	Point destinazione;
