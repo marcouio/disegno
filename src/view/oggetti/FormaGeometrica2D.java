@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import view.oggetti.painter.IPainter;
 
-public abstract class OggettoGraficoConSuperfice extends OggettoGrafico implements IOggettoGraficoConSuperficie, IOggettoGraficoComplesso {
+public abstract class FormaGeometrica2D extends FormaGeometricaComplessa implements IFormaGeometrica2D, IFormaGeometricaComplessa {
 
 	private int width;
 	private int height;
@@ -17,11 +17,11 @@ public abstract class OggettoGraficoConSuperfice extends OggettoGrafico implemen
 	private ArrayList<Lato> listaLati = new ArrayList<Lato>();
 	private ArrayList<Lato> latiVicinoMouse;
 
-	public OggettoGraficoConSuperfice(final String nome, final IPainter painter) {
+	public FormaGeometrica2D(final String nome, final IPainter painter) {
 		super(nome, painter);
 	}
 
-	public OggettoGraficoConSuperfice() {
+	public FormaGeometrica2D() {
 		super();
 	}
 

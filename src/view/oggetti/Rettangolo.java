@@ -9,7 +9,7 @@ import view.oggetti.painter.IPainter;
 import view.oggetti.painter.PainterRettangolo;
 import disegno.UtilDisegno;
 
-public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGraficoConSuperficie {
+public class Rettangolo extends FormaGeometrica2D implements IFormaGeometrica2D {
 
 	private Lato latoAlto = new Lato("Alto");
 	private Lato latoBasso = new Lato("Basso");
@@ -119,38 +119,38 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 	public void ridimensiona(final Point mouse) {
 
 		if(latiSuMouse.contains(latoSinistra)){
-			ridimensionaClickLatoSinistro(mouse);
+			ridimensionaClickSuLatoSinistro(mouse);
 		}
 		if(latiSuMouse.contains(latoDestra)){
-			ridimensionaClickLatoDestro(mouse);
+			ridimensionaClickSuLatoDestro(mouse);
 		}
 		if(latiSuMouse.contains(latoAlto)){
-			ridimensionaClickLatoAlto(mouse);
+			ridimensionaClickSuLatoAlto(mouse);
 		}
 		if(latiSuMouse.contains(latoBasso)){
-			ridimensionaClickLatoBasso(mouse);
+			ridimensionaClickSuLatoBasso(mouse);
 		}
 		
 		setLocation(getX(), getY());
 		setSize(getWidth(), getHeight());
 	}
 
-	private void ridimensionaClickLatoBasso(final Point mouse) {
+	private void ridimensionaClickSuLatoBasso(final Point mouse) {
 		setHeight((int) (Math.abs(mouse.getY() - getY())));
 	}
 
-	private void ridimensionaClickLatoAlto(final Point mouse) {
+	private void ridimensionaClickSuLatoAlto(final Point mouse) {
 		double newY = mouse.getY() - distanzaMouseDaXY.getY();
 		setHeight((int) (getY() - newY) + getHeight());
 		setY((int) (newY));
 
 	}
 
-	private void ridimensionaClickLatoDestro(final Point mouse) {
+	private void ridimensionaClickSuLatoDestro(final Point mouse) {
 		setWidth((int) (Math.abs(mouse.getX() - getX())));
 	}
 
-	public void ridimensionaClickLatoSinistro(final Point mouse) {
+	public void ridimensionaClickSuLatoSinistro(final Point mouse) {
 		double newX = mouse.getX() - distanzaMouseDaXY.getX();
 		setWidth((int) (getX() - newX) + getWidth());
 		setX((int) (newX));

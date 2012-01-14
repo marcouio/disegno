@@ -3,7 +3,7 @@ package view.oggetti;
 import java.awt.Graphics;
 import java.awt.Point;
 
-public interface IOggettoGrafico {
+public interface IFormaGeometrica {
 
 	public Point getPuntoCentrale();
 

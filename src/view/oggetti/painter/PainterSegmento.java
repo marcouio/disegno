@@ -2,13 +2,13 @@ package view.oggetti.painter;
 
 import java.awt.Graphics;
 
-import view.oggetti.IOggettoGrafico;
+import view.oggetti.IFormaGeometrica;
 import view.oggetti.Segmento;
 
 
 public class PainterSegmento extends PainterBase{
 
-	public PainterSegmento(IOggettoGrafico oggettoGrafico) {
+	public PainterSegmento(IFormaGeometrica oggettoGrafico) {
 		super(oggettoGrafico);
 	}
 
