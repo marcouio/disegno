@@ -147,7 +147,7 @@ public class Rettangolo extends FormaGeometrica2D implements IFormaGeometrica2D 
 		setWidth((int) (Math.abs(mouse.getX() - getX())));
 	}
 
-	public void ridimensionaClickSuLatoSinistro(final Point mouse) {
+	private void ridimensionaClickSuLatoSinistro(final Point mouse) {
 		double newX = mouse.getX() - distanzaMouseDaXY.getX();
 		setWidth((int) (getX() - newX) + getWidth());
 		setX((int) (newX));
