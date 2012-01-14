@@ -17,7 +17,6 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 	private Lato latoDestra = new Lato("Destra");
 	public boolean nonModificaLarghezza = false;
 	public boolean nonModificaAltezza = false;
-	private OggettoGraficoConSuperfice ret;
 	private ArrayList<Lato> latiSuMouse;
 	private boolean mouseIsInRegion;
 
@@ -119,34 +118,19 @@ public class Rettangolo extends OggettoGraficoComplesso implements IOggettoGrafi
 	@Override
 	public void ridimensiona(final Point mouse) {
 
-		Point puntoCentrale = getPuntoCentrale();
-
-		boolean quadranteAltoDestra = mouse.getX() > puntoCentrale.getX() && mouse.getY() < puntoCentrale.getY();
-		boolean quadranteBassoDestra = mouse.getX() > puntoCentrale.getX() && mouse.getY() > puntoCentrale.getY();
-		boolean quadranteBassoSinistra = mouse.getX() < puntoCentrale.getX() && mouse.getY() > puntoCentrale.getY();
-		boolean quadranteAltoSinistra = mouse.getX() < puntoCentrale.getX() && mouse.getY() < puntoCentrale.getY();
-
-		if (latiSuMouse.size() == 1 && latiSuMouse.get(0).getNome().equals("Sinistra")) {
+		if(latiSuMouse.contains(latoSinistra)){
 			ridimensionaClickLatoSinistro(mouse);
-		} else if (latiSuMouse.size() == 1 && latiSuMouse.get(0).getNome().equals("Destra")) {
-			ridimensionaClickLatoDestro(mouse);
-		} else if (latiSuMouse.size() == 1 && latiSuMouse.get(0).getNome().equals("Alto")) {
-			ridimensionaClickLatoAlto(mouse);
-		} else if (latiSuMouse.size() == 1 && latiSuMouse.get(0).getNome().equals("Basso")) {
-			ridimensionaClickLatoBasso(mouse);
-		} else if (latiSuMouse.size() == 2 && quadranteAltoSinistra) {
-			ridimensionaClickLatoSinistro(mouse);
-			ridimensionaClickLatoAlto(mouse);
-		} else if (latiSuMouse.size() == 2 && quadranteBassoSinistra) {
-			ridimensionaClickLatoSinistro(mouse);
-			ridimensionaClickLatoBasso(mouse);
-		} else if (latiSuMouse.size() == 2 && quadranteBassoDestra) {
-			ridimensionaClickLatoBasso(mouse);
-			ridimensionaClickLatoDestro(mouse);
-		} else if (latiSuMouse.size() == 2 && quadranteAltoDestra) {
-			ridimensionaClickLatoAlto(mouse);
+		}
+		if(latiSuMouse.contains(latoDestra)){
 			ridimensionaClickLatoDestro(mouse);
 		}
+		if(latiSuMouse.contains(latoAlto)){
+			ridimensionaClickLatoAlto(mouse);
+		}
+		if(latiSuMouse.contains(latoBasso)){
+			ridimensionaClickLatoBasso(mouse);
+		}
+		
 		setLocation(getX(), getY());
 		setSize(getWidth(), getHeight());
 	}
