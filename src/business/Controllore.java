@@ -95,13 +95,6 @@ public class Controllore extends ControlloreBase {
 		final int x = e.getX(), y = e.getY();
 		final Point mouse = new Point(x, y);
 		Rettangolo ret = p.getRet();
-		final Point puntoCentrale = ret.getPuntoCentrale();
-
-		int riferimentoLatiWidth = ret.getWidth() / 2;
-		int riferimentoLatiHeight = ret.getHeight() / 2;
-
-		ret.nonModificaAltezza = riferimentoLatiHeight > Math.abs(puntoCentrale.getY() - mouse.getY());
-		ret.nonModificaLarghezza = riferimentoLatiWidth > Math.abs(puntoCentrale.getX() - mouse.getX());
 
 		ret.mouseIsInRegion(mouse);
 		ret.settaLatiSuMouse(mouse);
