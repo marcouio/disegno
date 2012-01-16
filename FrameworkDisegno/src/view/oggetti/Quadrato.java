@@ -1,14 +1,32 @@
 package view.oggetti;
 
+import view.oggetti.painter.IPainter;
+
 public class Quadrato extends Rettangolo {
 
-	@Override
-	public int getArea() {
-		return (int) Math.pow(getLatoAlto().getLunghezza(), 2);
+	public Quadrato(final String nome, final IPainter painter) {
+		super(nome, painter);
 	}
 
-	@Override
-	public int getPerimetro() {
-		return getLatoAlto().getLunghezza() * 4;
+	public Quadrato(final String nome) {
+		super(nome);
+	}
+
+	public Quadrato() {
+		super();
+	}
+
+	public int getLato() {
+		return getWidth();
+	}
+
+	public static void main(final String[] args) {
+		Rettangolo rettangolo = new Rettangolo("ret");
+		Quadrato quadrato = new Quadrato();
+		quadrato.setSize(50, 50);
+		rettangolo.setSize(100, 50);
+		rettangolo = quadrato;
+		rettangolo.setSize(50, 20);
+		System.out.println(rettangolo.getArea());
 	}
 }
