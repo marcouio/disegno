@@ -9,8 +9,8 @@ public class PuntaTriangolo extends PuntaBase {
 
 	public PuntaTriangolo(final Segmento segmento, final int lunghezzaLati) {
 		super(segmento, lunghezzaLati);
-		setPainter(new PainterPuntaTriangolo(this));
 		aggiungiParteSpecificaPunta();
+		setPainter(new PainterPuntaTriangolo(this));
 	}
 
 	public PuntaTriangolo(final Segmento segmento) {
