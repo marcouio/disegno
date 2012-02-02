@@ -28,6 +28,7 @@ public abstract class FormaGeometricaComplessa extends FormaGeometrica implement
 			IFormaGeometrica oggettoGrafico = (IFormaGeometrica) iterator.next();
 			oggettoGrafico.draw(g);
 		}		
+		super.draw(g);
 	}
 
 	@Override
