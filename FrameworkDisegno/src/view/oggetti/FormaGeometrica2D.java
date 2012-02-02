@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import view.oggetti.painter.IPainter;
 
-public abstract class FormaGeometrica2D extends FormaGeometrica implements IFormaGeometrica2D, IFormaGeometrica{
+public abstract class FormaGeometrica2D extends FormaGeometricaComplessa implements IFormaGeometrica2D, IFormaGeometrica{
 
 	private int width;
 	private int height;

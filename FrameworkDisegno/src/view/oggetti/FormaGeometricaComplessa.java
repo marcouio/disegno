@@ -27,8 +27,7 @@ public abstract class FormaGeometricaComplessa extends FormaGeometrica implement
 		for (Iterator<IFormaGeometrica> iterator = listaOggetti.iterator(); iterator.hasNext();) {
 			IFormaGeometrica oggettoGrafico = (IFormaGeometrica) iterator.next();
 			oggettoGrafico.draw(g);
-		}
-		super.draw(g);
+		}		
 	}
 
 	@Override
