@@ -31,6 +31,10 @@ public class Rettangolo extends FormaGeometrica2D implements IFormaGeometrica2D 
 	}
 
 	private void init() {
+		add(latoAlto);
+		add(latoBasso);
+		add(latoDestra);
+		add(latoSinistra);
 		getListaLati().add(latoAlto);
 		getListaLati().add(latoBasso);
 		getListaLati().add(latoDestra);
