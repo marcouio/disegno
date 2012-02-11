@@ -34,7 +34,6 @@ public class Controllore extends ControlloreBase {
 
 	@Override
 	public void mainOverridato(final FrameBase frame) {
-		Label l = new Label("Ciaooaciaocoac", frame.getContentPane());
 		p = new Pannello(frame);
 		p.setSize(400, 600);
 		p.setBackground(Color.white);
@@ -95,7 +94,6 @@ public class Controllore extends ControlloreBase {
 		final int x = e.getX(), y = e.getY();
 		final Point mouse = new Point(x, y);
 		Rettangolo ret = p.getRet();
-
 		ret.mouseIsInRegion(mouse);
 		ret.settaLatiSuMouse(mouse);
 		ret.settaDistanzaDaMouse(mouse);

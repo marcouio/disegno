@@ -2,6 +2,7 @@ package view.oggetti.punte;
 
 import grafica.componenti.contenitori.PannelloBase;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.WindowAdapter;
@@ -44,6 +45,7 @@ public class PuntaBase extends FormaGeometricaComplessa {
 		//l'angolo della parte sinistra della punta
 		double angoloUno = angolo + Math.toRadians(ARROW_ANGLE);
 
+		//il punto di destinazione del lato sinistro della freccia
 		Point pointSinistro = new Point((int) estremoCentrale.getX() + (int) (Math.cos(angoloUno) * lunghezzaLati), (int) (estremoCentrale.getY() + (int) (Math.sin(angoloUno) * lunghezzaLati)));
 
 		latoSinistro = new Segmento(estremoCentrale, pointSinistro);
@@ -51,6 +53,7 @@ public class PuntaBase extends FormaGeometricaComplessa {
 		//l'angolo della parte destra della punta
 		double angoloDue = angolo - Math.toRadians(ARROW_ANGLE);
 
+		//il punto di destinazione del lato destro della freccia
 		Point pointDestro = new Point((int) estremoCentrale.getX() + (int) (Math.cos(angoloDue) * lunghezzaLati), (int) estremoCentrale.getY() + (int) (Math.sin(angoloDue) * lunghezzaLati));
 
 		latoDestro = new Segmento(estremoCentrale, pointDestro);
@@ -124,6 +127,9 @@ public class PuntaBase extends FormaGeometricaComplessa {
 				JFrame f = new JFrame();
 				f.setVisible(true);
 				f.getContentPane().add(new PannelloBase(f) {
+					
+					private static final long serialVersionUID = 1L;
+
 					@Override
 					protected void paintComponent(final Graphics g) {
 						super.paintComponent(g);
@@ -135,6 +141,7 @@ public class PuntaBase extends FormaGeometricaComplessa {
 						//	    					ArrowHead.NONE.draw((Graphics2D) g, uno, due);
 						//	    					ah.draw((Graphics2D) g, uno, due);
 						PuntaTriangolo punta = new PuntaTriangolo(l, 20);
+						punta.setBackground(Color.RED);
 						//						PuntaBase punta = new PuntaBase(l, 20);
 						punta.draw(g);
 					}

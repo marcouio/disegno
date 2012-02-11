@@ -1,11 +1,14 @@
 package view.oggetti.punte;
 
+import java.awt.Color;
+
 import view.oggetti.Segmento;
 import view.oggetti.painter.PainterPuntaTriangolo;
 
 public class PuntaTriangolo extends PuntaBase {
 
 	private Segmento latoBasso;
+	private Color background = Color.WHITE;
 
 	public PuntaTriangolo(final Segmento segmento, final int lunghezzaLati) {
 		super(segmento, lunghezzaLati);
@@ -21,6 +24,14 @@ public class PuntaTriangolo extends PuntaBase {
 	private void aggiungiParteSpecificaPunta() {
 		latoBasso = new Segmento(getLatoSinistro().getDestinazione(), getLatoDestro().getDestinazione());
 		add(latoBasso);
+	}
+
+	public Color getBackground() {
+		return background;
+	}
+
+	public void setBackground(Color background) {
+		this.background = background;
 	}
 
 }

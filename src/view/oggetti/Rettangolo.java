@@ -1,5 +1,6 @@
 package view.oggetti;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -16,7 +17,12 @@ public class Rettangolo extends FormaGeometrica2D implements IFormaGeometrica2D 
 	private Lato latoDestra = new Lato("Destra");
 	private ArrayList<Lato> latiSuMouse;
 	private boolean mouseIsInRegion;
+	private Color background = Color.WHITE;
 
+	public static void main(String[] args) {
+		
+	}
+	
 	public boolean isMouseIsInRegion() {
 		return mouseIsInRegion;
 	}
@@ -160,6 +166,14 @@ public class Rettangolo extends FormaGeometrica2D implements IFormaGeometrica2D 
 	public void mouseIsInRegion(final Point mouse) {
 		Rectangle rect = new Rectangle(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 		mouseIsInRegion = UtilDisegno.isInRegion(mouse, rect);
+	}
+
+	public Color getBackground() {
+		return background;
+	}
+
+	public void setBackground(Color background) {
+		this.background = background;
 	}
 	
 }
