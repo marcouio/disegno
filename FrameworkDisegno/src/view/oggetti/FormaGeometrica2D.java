@@ -123,7 +123,7 @@ public abstract class FormaGeometrica2D extends FormaGeometricaComplessa impleme
 	}
 
 	@Override
-	public ArrayList<Lato> isMouseSuiLati(final Point mouse) {
+	public ArrayList<Lato> setMouseSuiLati(final Point mouse) {
 		latiVicinoMouse = new ArrayList<Lato>();
 		for (Object element : listaLati) {
 			Lato lato = (Lato) element;

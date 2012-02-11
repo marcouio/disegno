@@ -14,4 +14,8 @@ public interface IFormaGeometrica {
 	public void draw(final Graphics g);
 
 	public void ridimensiona(Point mouse);
+	
+	public boolean isInRegion(Point mouse);
+	
+	public void settaDistanzaDaMouse(final Point puntatoreMouse);
 }
