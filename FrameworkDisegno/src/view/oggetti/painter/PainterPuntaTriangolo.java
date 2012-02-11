@@ -24,7 +24,7 @@ public class PainterPuntaTriangolo extends PainterPuntaBase {
 		path.lineTo(puntaTriangolo.getEstremoCentrale().getX(), puntaTriangolo.getEstremoCentrale().getY());
 		Graphics2D g2 = (Graphics2D) g;
 		path.closePath();
-		g2.setColor(Color.WHITE);
+		g2.setColor(puntaTriangolo.getBackground());
 		g2.fill(path);
 
 		g2.setColor(Color.BLACK);
