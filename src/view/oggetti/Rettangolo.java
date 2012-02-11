@@ -160,12 +160,12 @@ public class Rettangolo extends FormaGeometrica2D implements IFormaGeometrica2D 
 	}
 
 	public void settaLatiSuMouse(final Point mouse) {
-		latiSuMouse = this.isMouseSuiLati(mouse);
+		latiSuMouse = this.setMouseSuiLati(mouse);
 	}
 
-	public void mouseIsInRegion(final Point mouse) {
+	private boolean checkIfmouseIsInRegion(final Point mouse) {
 		Rectangle rect = new Rectangle(this.getX(), this.getY(), this.getWidth(), this.getHeight());
-		mouseIsInRegion = UtilDisegno.isInRegion(mouse, rect);
+		return mouseIsInRegion = UtilDisegno.isInRegion(mouse, rect);
 	}
 
 	public Color getBackground() {
@@ -174,6 +174,11 @@ public class Rettangolo extends FormaGeometrica2D implements IFormaGeometrica2D 
 
 	public void setBackground(Color background) {
 		this.background = background;
+	}
+
+	@Override
+	public boolean isInRegion(Point mouse) {
+		return checkIfmouseIsInRegion(mouse);
 	}
 	
 }

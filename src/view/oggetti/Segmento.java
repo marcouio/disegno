@@ -54,4 +54,16 @@ public class Segmento extends FormaGeometrica {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public boolean isInRegion(Point mouse) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void settaDistanzaDaMouse(Point puntatoreMouse) {
+		// TODO Auto-generated method stub
+		
+	}
 }

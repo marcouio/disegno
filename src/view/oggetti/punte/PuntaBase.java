@@ -157,4 +157,16 @@ public class PuntaBase extends FormaGeometricaComplessa {
 		});
 	}
 
+	@Override
+	public boolean isInRegion(Point mouse) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void settaDistanzaDaMouse(Point puntatoreMouse) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

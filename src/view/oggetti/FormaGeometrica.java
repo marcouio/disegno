@@ -1,6 +1,7 @@
 package view.oggetti;
 
 import java.awt.Graphics;
+import java.awt.Point;
 
 import view.oggetti.painter.IPainter;
 
@@ -43,5 +44,4 @@ public abstract class FormaGeometrica implements IFormaGeometrica {
 	public void draw(final Graphics g) {
 		painter.paint(g);
 	}
-
 }
