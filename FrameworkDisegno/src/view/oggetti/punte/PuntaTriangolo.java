@@ -1,9 +1,9 @@
-package view.oggetti.punte;
+package disegno.oggetti.punte;
 
 import java.awt.Color;
 
-import view.oggetti.Segmento;
-import view.oggetti.painter.PainterPuntaTriangolo;
+import disegno.oggetti.Segmento;
+import disegno.oggetti.painter.PainterPuntaTriangolo;
 
 public class PuntaTriangolo extends PuntaBase {
 

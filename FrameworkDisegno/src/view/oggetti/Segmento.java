@@ -1,8 +1,8 @@
-package view.oggetti;
+package disegno.oggetti;
 
 import java.awt.Point;
 
-import view.oggetti.painter.PainterSegmento;
+import disegno.oggetti.painter.PainterSegmento;
 
 public class Segmento extends FormaGeometrica {
 

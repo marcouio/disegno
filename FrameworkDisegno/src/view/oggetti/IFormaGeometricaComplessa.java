@@ -1,4 +1,4 @@
-package view.oggetti;
+package disegno.oggetti;
 
 public interface IFormaGeometricaComplessa extends IFormaGeometrica {
 

@@ -1,9 +1,9 @@
-package view.oggetti;
+package disegno.oggetti;
 
 import java.awt.Graphics;
-import java.awt.Point;
 
-import view.oggetti.painter.IPainter;
+import disegno.oggetti.painter.IPainter;
+
 
 public abstract class FormaGeometrica implements IFormaGeometrica {
 

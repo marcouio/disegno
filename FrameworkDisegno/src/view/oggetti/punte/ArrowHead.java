@@ -19,7 +19,7 @@
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-package view.oggetti.punte;
+package disegno.oggetti.punte;
 
 import grafica.componenti.contenitori.PannelloBase;
 
@@ -35,7 +35,7 @@ import java.awt.geom.Point2D;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import view.oggetti.Segmento;
+import disegno.oggetti.Segmento;
 
 /**
  * This class defines arrow heads of various shapes.

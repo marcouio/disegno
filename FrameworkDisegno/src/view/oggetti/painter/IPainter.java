@@ -1,4 +1,4 @@
-package view.oggetti.painter;
+package disegno.oggetti.painter;
 
 import java.awt.Graphics;
 

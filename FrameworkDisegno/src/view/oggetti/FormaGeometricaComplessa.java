@@ -1,10 +1,10 @@
-package view.oggetti;
+package disegno.oggetti;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import view.oggetti.painter.IPainter;
+import disegno.oggetti.painter.IPainter;
 
 public abstract class FormaGeometricaComplessa extends FormaGeometrica implements IFormaGeometricaComplessa {
 

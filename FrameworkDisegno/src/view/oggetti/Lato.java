@@ -1,4 +1,4 @@
-package view.oggetti;
+package disegno.oggetti;
 
 import java.awt.Point;
 

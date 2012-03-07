@@ -1,12 +1,12 @@
-package view.oggetti.painter;
+package disegno.oggetti.painter;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 
-import view.oggetti.IFormaGeometrica;
-import view.oggetti.punte.PuntaTriangolo;
+import disegno.oggetti.IFormaGeometrica;
+import disegno.oggetti.punte.PuntaTriangolo;
 
 public class PainterPuntaTriangolo extends PainterPuntaBase {
 

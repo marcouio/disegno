@@ -1,11 +1,11 @@
-package view.oggetti;
+package disegno.oggetti;
 
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
-import view.oggetti.painter.IPainter;
+import disegno.oggetti.painter.IPainter;
 
 public abstract class FormaGeometrica2D extends FormaGeometricaComplessa implements IFormaGeometrica2D, IFormaGeometrica{
 
