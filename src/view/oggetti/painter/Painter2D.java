@@ -1,12 +1,10 @@
-package view.oggetti.painter;
+package disegno.oggetti.painter;
 
 import java.awt.Graphics;
 import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
 
-import view.oggetti.FormaGeometrica2D;
-import view.oggetti.IFormaGeometrica;
-import view.oggetti.Lato;
+import disegno.oggetti.IFormaGeometrica;
 
 public class Painter2D extends PainterBase {
 

@@ -1,8 +1,8 @@
-package view.oggetti.painter;
+package disegno.oggetti.painter;
 
 import java.awt.Graphics;
 
-import view.oggetti.IFormaGeometrica;
+import disegno.oggetti.IFormaGeometrica;
 
 public class PainterBase implements IPainter {
 

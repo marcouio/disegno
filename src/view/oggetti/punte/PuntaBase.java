@@ -1,4 +1,4 @@
-package view.oggetti.punte;
+package disegno.oggetti.punte;
 
 import grafica.componenti.contenitori.PannelloBase;
 
@@ -11,8 +11,8 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import view.oggetti.FormaGeometricaComplessa;
-import view.oggetti.Segmento;
+import disegno.oggetti.FormaGeometricaComplessa;
+import disegno.oggetti.Segmento;
 
 public class PuntaBase extends FormaGeometricaComplessa {
 

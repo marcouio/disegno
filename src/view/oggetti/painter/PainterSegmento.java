@@ -1,9 +1,9 @@
-package view.oggetti.painter;
+package disegno.oggetti.painter;
 
 import java.awt.Graphics;
 
-import view.oggetti.IFormaGeometrica;
-import view.oggetti.Segmento;
+import disegno.oggetti.IFormaGeometrica;
+import disegno.oggetti.Segmento;
 
 
 public class PainterSegmento extends PainterBase{

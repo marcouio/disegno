@@ -1,6 +1,6 @@
-package view.oggetti.punte;
+package disegno.oggetti.punte;
 
-import view.oggetti.Segmento;
+import disegno.oggetti.Segmento;
 
 public class PuntaStella extends PuntaBase {
 

@@ -1,13 +1,13 @@
-package view.oggetti;
+package disegno.oggetti;
 
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-import view.oggetti.painter.IPainter;
-import view.oggetti.painter.PainterRettangolo;
 import disegno.UtilDisegno;
+import disegno.oggetti.painter.IPainter;
+import disegno.oggetti.painter.PainterRettangolo;
 
 public class Rettangolo extends FormaGeometrica2D implements IFormaGeometrica2D {
 

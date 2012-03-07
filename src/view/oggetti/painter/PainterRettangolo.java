@@ -1,4 +1,4 @@
-package view.oggetti.painter;
+package disegno.oggetti.painter;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,7 +8,8 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 
-import view.oggetti.Rettangolo;
+import disegno.oggetti.Rettangolo;
+
 
 public class PainterRettangolo extends PainterBase {
 

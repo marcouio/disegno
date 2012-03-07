@@ -1,17 +1,15 @@
-package view.oggetti;
+package disegno.oggetti;
 
 import grafica.componenti.contenitori.PannelloBase;
 
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import view.oggetti.painter.IPainter;
-import view.oggetti.punte.PuntaTriangolo;
+import disegno.oggetti.painter.IPainter;
 
 public class Quadrato extends Rettangolo {
 
