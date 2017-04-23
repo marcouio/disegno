@@ -1,10 +1,10 @@
-package view;
+package com.molinari.disegno.view;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
-import business.Controllore;
+import com.molinari.disegno.business.StarterDisegno;
 
 public class MyMouseListener {
 
@@ -12,29 +12,29 @@ public class MyMouseListener {
 
 		@Override
 		public void mousePressed(final MouseEvent e) {
-			Controllore.mousePressed(e);
+			StarterDisegno.mousePressed(e);
 		}
 
 		@Override
 		public void mouseReleased(final MouseEvent e) {
-			Controllore.mouseReleased(e);
+			StarterDisegno.mouseReleased(e);
 		}
 
 		@Override
 		public void mouseClicked(final MouseEvent e) {
-			Controllore.mouseClicked(e);
+			StarterDisegno.mouseClicked(e);
 		}
 	};
 
 	MouseMotionAdapter mouseMotionAdapter = new MouseMotionAdapter() {
 		@Override
 		public void mouseMoved(final MouseEvent e) {
-			Controllore.mouseMoved(e);
+			StarterDisegno.mouseMoved(e);
 		}
 
 		@Override
 		public void mouseDragged(final MouseEvent e) {
-			Controllore.mouseDragged(e);
+			StarterDisegno.mouseDragged(e);
 		}
 
 	};

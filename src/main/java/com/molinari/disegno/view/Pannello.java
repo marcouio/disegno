@@ -1,6 +1,4 @@
-package view;
-
-import grafica.componenti.contenitori.PannelloBase;
+package com.molinari.disegno.view;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -8,10 +6,11 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import view.oggetti.FormaGeometrica;
-import view.oggetti.Rettangolo;
-import view.oggetti.Segmento;
-import view.oggetti.punte.PuntaTriangolo;
+import com.molinari.utility.graphic.component.container.PannelloBase;
+import com.molinari.utility.paint.objects.FormaGeometrica;
+import com.molinari.utility.paint.objects.Segmento;
+import com.molinari.utility.paint.objects.poligoni.Rettangolo;
+import com.molinari.utility.paint.objects.punte.PuntaTriangolo;
 
 public class Pannello extends PannelloBase {
 
