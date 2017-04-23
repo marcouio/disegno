@@ -2,6 +2,7 @@ package com.molinari.disegno.business;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
@@ -23,9 +24,13 @@ public class StarterDisegno extends StarterBase {
 	
 	@Override
 	public void start(FrameBase frameBase) {
+		frameBase.setExtendedState(Frame.MAXIMIZED_BOTH);
+		frameBase.setBounds(10, 20, 1024, 648);
 		p = new Pannello(frameBase);
 		p.setSize(400, 600);
 		p.setBackground(Color.white);
+		
+		frameBase.setVisible(true);
 	}
 	
 	public static void mouseClicked(final MouseEvent e) {
