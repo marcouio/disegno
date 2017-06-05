@@ -42,16 +42,18 @@ public class StarterDisegno extends StarterBase {
 		if(p.getOggettoSelezionato() instanceof FormaGeometrica2D){
 			FormaGeometrica2D ret = (FormaGeometrica2D) p.getOggettoSelezionato();
 			final Point puntatore = new Point(x, y);
+			boolean inRegion = ret.isInRegion(puntatore);
+			System.out.println(inRegion);
 			//		System.out.println("n lati vicini mouse: " + ret.isMouseSuiLati(puntatore).size());
 			if (ret instanceof Poligono && ((Poligono)ret).getLatiVicinoMouse(puntatore).size() > 0) {
 				ret.ridimensiona(puntatore);
-			} else if (ret.isInRegion(puntatore)) {
+			} else if (inRegion) {
 				ret.moveTo(x, y);
 			}
 		}
 		Image offscreen = null;
 		Graphics bufferGraphics = null;
-		Object[] returns = UtilDisegno.getImmagineBufferizzata(new Dimension(p.getWidth(), p.getHeight()), offscreen, bufferGraphics);
+		Object[] returns = UtilDisegno.getImmagineBufferizzata(new Dimension(p.getWidth(), p.getHeight()), offscreen);
 		bufferGraphics = (Graphics) returns[0];
 		offscreen = (Image) returns[1];
 		bufferGraphics.setColor(Color.WHITE);
@@ -83,7 +85,9 @@ public class StarterDisegno extends StarterBase {
 		ArrayList<FormaGeometrica> oggetti = p.getOggetti();
 		for (Iterator iterator = oggetti.iterator(); iterator.hasNext();) {
 			FormaGeometrica formaGeometrica = (FormaGeometrica) iterator.next();
-			if(formaGeometrica.isInRegion(mouse)){
+			boolean inRegion = formaGeometrica.isInRegion(mouse);
+			System.out.println(inRegion);
+			if(inRegion){
 				p.setOggettoSelezionato(formaGeometrica);
 				break;
 			}
